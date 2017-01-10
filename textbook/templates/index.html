@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>Welcome to Language!</h1>
+        {% if user.is_authenticated %}
+            <p>Click here to learn Chinese</p>
+            <p><a class="btn btn-primary btn-lg" href="#">
+                <span class="glyphicon glyphicon-tower"></span>
+                Learn Chinese
+            </a></p>
+        {% else %}
+            <p>Click here to login</p>
+            <p><a class="btn btn-primary btn-lg" href="/accounts/login">Login</a></p>
+        {% endif %}
+    </div>
+</div>
+
+{% if user.is_authenticated %}
+<div class="container">
+<div class="row">
+    <div class="col-sm-4">
+        <h2>Foo</h2>
+        <p>Foo</p>
+        <p><a class="btn btn-danger" href="#">
+            <span class="glyphicon glyphicon-tasks"></span>
+            Foo
+        </a></p>
+    </div>
+    <div class="col-sm-4">
+        <h2>Foo</h2>
+        <p>Foo</p>
+        <p><a class="btn btn-warning" href="#">
+            <span class="glyphicon glyphicon-paperclip"></span>
+            Foo
+        </a></p>
+    </div>
+    <div class="col-sm-4">
+        <h2>Foo</h2>
+        <p>Foo</p>
+        <p><a class="btn btn-success" href="#">
+            <span class="glyphicon glyphicon-user"></span>
+            Foo
+        </a></p>
+    </div>
+</div>
+</div>
+{% endif %}
+{% endblock %}
