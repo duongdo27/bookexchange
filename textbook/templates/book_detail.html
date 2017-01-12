@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ object.name }}</h2>
+<h4 class="text-info">ISBN: {{ object.isbn }}</h4>
+<h4 class="text-danger">Author: {{ object.author }}</h4>
+<img src="http://images.amazon.com/images/P/{{ object.isbn }}.01._SCLZZZZZZZ_.jpg">
+
+{% endblock %}
