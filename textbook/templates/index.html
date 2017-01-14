@@ -3,12 +3,12 @@
 {% block content %}
 <div class="jumbotron">
     <div class="container">
-        <h1>Welcome to Language!</h1>
+        <h1>Welcome to Book Exchange!</h1>
         {% if user.is_authenticated %}
-            <p>Click here to learn Chinese</p>
-            <p><a class="btn btn-primary btn-lg" href="#">
+            <p>Click here to buy or sell book</p>
+            <p><a class="btn btn-primary btn-lg" href="/book_list">
                 <span class="glyphicon glyphicon-tower"></span>
-                Learn Chinese
+                Trading Book
             </a></p>
         {% else %}
             <p>Click here to login</p>

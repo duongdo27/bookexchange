@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table id="books" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">Book name</th>
+        </tr>
+    </thead>
+    {% for book in object_list %}
+        <tr>
+            <td class="text-center">
+                <a href="{% url 'textbook:book_detail' book.id %}">{{ book.name }}</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+{% block scripts %}
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#books").DataTable({
+            stateSave: true
+        });
+    });
+</script>
+{% endblock %}
