@@ -17,6 +17,9 @@ class Section(models.Model):
     department = models.CharField(max_length=200)
     professor = models.CharField(max_length=100, null=True)
 
+    def __repr__(self):
+        return '{} - {}, Section {} ({})'.format(self.department, self.course, self.section, self.professor)
+
     class Meta:
         unique_together = ('section', 'course', 'department')
 

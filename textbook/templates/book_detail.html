@@ -7,4 +7,14 @@
 <h4 class="text-danger">Author: {{ object.author }}</h4>
 <img src="http://images.amazon.com/images/P/{{ object.isbn }}.01._SCLZZZZZZZ_.jpg">
 
+<hr>
+<h4>Couses used:</h4>
+<ul>
+    {% for section in section_data %}
+        <li>{{ section }}</li>
+    {% endfor %}
+</ul>
+
+
+
 {% endblock %}
