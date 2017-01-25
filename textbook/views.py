@@ -1,19 +1,19 @@
 from django.views.generic import TemplateView, DetailView, ListView, UpdateView
 from .models import Book, Section, BookSection, UserBook
 from .form import UserBookForm
-import ipdb
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class HomeView(TemplateView):
     template_name = 'index.html'
 
 
-class BookListView(ListView):
+class BookListView(LoginRequiredMixin, ListView):
     model = Book
     template_name = "book_list.html"
 
 
-class BookDetailView(DetailView):
+class BookDetailView(LoginRequiredMixin, DetailView):
     model = Book
     template_name = "book_detail.html"
 
