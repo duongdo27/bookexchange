@@ -1,26 +1,61 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h2>{{ object.name }}</h2>
-<h4 class="text-info">ISBN: {{ object.isbn }}</h4>
-<h4 class="text-danger">Author: {{ object.author }}</h4>
-<img src="http://images.amazon.com/images/P/{{ object.isbn }}.01._SCLZZZZZZZ_.jpg">
-
-<hr>
-<h4>Couses used:</h4>
-<ul>
-    {% for section in section_data %}
-        <li>{{ section }}</li>
-    {% endfor %}
-</ul>
-<hr>
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+<div class="row">
+    <div class="col-sm-6">
+        <h2>{{ object.name }}</h2>
+        <h4 class="text-info">ISBN: {{ object.isbn }}</h4>
+        <h4 class="text-danger">Author: {{ object.author }}</h4>
+        <img src="http://images.amazon.com/images/P/{{ object.isbn }}.01._SCLZZZZZZZ_.jpg">
 
 
+        <hr>
+        <h4>Couses used:</h4>
+        <ul>
+            {% for section in section_data %}
+            <li>{{ section }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 
+    <div class="col-sm-6">
+        <h4 class="text-danger">Your book</h4>
+
+        <form class="form-horizontal" method="post">
+            {% csrf_token %}
+
+            <div class="text-danger">{{ form.non_field_errors }}</div>
+
+            {% for field in form %}
+            <div class="form-group row">
+                <div class="col-sm-4">{{ field.label_tag }}</div>
+                <div class="col-sm-8">{{ field }}</div>
+            </div>
+
+            {% endfor %}
+
+            <input type="submit" class="btn btn-primary" value="Save">
+        </form>
+
+        <hr>
+        <h4 class="text-danger">Available books</h4>
+        <table id="books" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th class="col-sm-4 text-center">User</th>
+            <th class="col-sm-4 text-center">Unit Price</th>
+            <th class="col-sm-4 text-center">Quantity</th>
+        </tr>
+        </thead>
+        {% for user, price, quantity in other_data %}
+        <tr>
+            <td class="col-sm-4 text-center">{{ user }}</td>
+            <td class="col-sm-4 text-center">{{ price }}</td>
+            <td class="col-sm-4 text-center">{{ quantity }}</td>
+        </tr>
+
+        {% endfor %}
+        </table>
+    </div>
+</div>
 {% endblock %}
